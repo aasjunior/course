@@ -87,3 +87,14 @@ User user2 = new User(
   "123456"  
 );
 ```
+<hr>
+
+# Service layer, component registration
+#### Components registration:
+```
+@Component
+@Service
+@Repository
+```
+<hr>
+## Order, Instant, ISO 8601
