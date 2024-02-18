@@ -89,7 +89,7 @@ User user2 = new User(
 ```
 <hr>
 
-# Service layer, component registration
+## Service layer, component registration
 #### Components registration:
 ```
 @Component
@@ -97,4 +97,33 @@ User user2 = new User(
 @Repository
 ```
 <hr>
+
 ## Order, Instant, ISO 8601
+### Basic new entity checklist:
+* Entity
+  * "To many" association, lazy loading, JsonIgnore
+* Repository
+* Seed
+* Service
+* Resource
+
+#### Objects:
+```
+Order order1 = new Order(
+    null,
+    Instant.parse("2024-02-16T01:03:07z"),
+    user1
+);
+
+Order order2 = new Order(
+    null,
+    Instant.parse("2024-02-17T01:03:07z"),
+    user2
+);
+
+Order order3 = new Order(
+    null,
+    Instant.parse("2024-02-18T01:03:07z"),
+    user2
+);
+```

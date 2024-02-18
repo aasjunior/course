@@ -15,7 +15,6 @@ import java.util.Arrays;
 public class TestConfig implements CommandLineRunner {
     private final UserRepository userRepository;
 
-
     @Override
     public void run(String... args) throws Exception {
         User user1 = new User(
@@ -23,7 +22,8 @@ public class TestConfig implements CommandLineRunner {
                 "Maria Brown",
                 "maria@gmail.com",
                 "98888888888",
-                "123456"
+                "123456",
+                null
         );
 
         User user2 = new User(
@@ -31,7 +31,8 @@ public class TestConfig implements CommandLineRunner {
                 "Alex Green",
                 "alex@gmail.com",
                 "97777777777",
-                "123456"
+                "123456",
+                null
         );
 
         userRepository.saveAll(Arrays.asList(user1, user2));
