@@ -59,3 +59,31 @@ spring.jpa.defer-datasource-initialization=true
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 ````
+<hr>
+
+## JPA repository, dependency injection, database seeding
+### Checklist:
+* UserRepository extends JPARepository<User, Long>
+* Configuration class for "test" profile
+* `@RequiredArgsConstructor` UserRepository
+* Instantiate objects in memory
+* Persist objects
+
+#### Objects:
+```
+User user1 = new User(
+  null,
+  "Maria Brown",
+  "maria@gmail.com",
+  "98888888888",
+  "123456"  
+);
+
+User user2 = new User(
+  null,
+  "Alex Green",
+  "alex@gmail.com",
+  "97777777777",
+  "123456"  
+);
+```
