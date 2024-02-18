@@ -111,19 +111,19 @@ User user2 = new User(
 ```
 Order order1 = new Order(
     null,
-    Instant.parse("2024-02-16T01:03:07z"),
+    Instant.parse("2024-02-16T01:03:07Z"),
     user1
 );
 
 Order order2 = new Order(
     null,
-    Instant.parse("2024-02-17T01:03:07z"),
+    Instant.parse("2024-02-17T01:03:07Z"),
     user2
 );
 
 Order order3 = new Order(
     null,
-    Instant.parse("2024-02-18T01:03:07z"),
-    user2
+    Instant.parse("2024-02-18T01:03:07Z"),
+    user1
 );
 ```
