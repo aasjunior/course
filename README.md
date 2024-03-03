@@ -203,3 +203,35 @@ public Product(Long id, String name, String description, Double price, String im
     this.imgURL = imgURL;
 }
 ```
+<hr>
+
+## Many-to-many association with JoinTable
+
+```
+# Category class:
+
+@JsonIgnore
+@ManyToMany(mappedBy = "categories")
+private Set<Product> products = new HashSet<>();
+
+# Product class:
+
+@ManyToMany
+@JoinTable(
+    name = "product_category",
+    joinColumns = @JoinColumn(name = "product_id"),
+    inverseJoinColumns = @JoinColumn(name = "category_id")
+)
+private Set<Category> categories = new HashSet<>();
+
+# TestConfig.run():
+
+p1.getCategories().add(cat2);
+p2.getCategories().add(cat1);
+p2.getCategories().add(cat3);
+p3.getCategories().add(cat3);
+p4.getCategories().add(cat3);
+p5.getCategories().add(cat2);
+
+productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+```

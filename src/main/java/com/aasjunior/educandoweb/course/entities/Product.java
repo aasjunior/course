@@ -29,7 +29,12 @@ public class Product implements Serializable {
     private Double price;
     private String imgURL;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(
+        name = "product_category",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private Set<Category> categories = new HashSet<>();
 
     public Product(Long id, String name, String description, Double price, String imgURL) {
