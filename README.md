@@ -235,3 +235,20 @@ p5.getCategories().add(cat2);
 
 productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 ```
+
+<hr>
+
+## OrderItem, many-to-many association with extra attributes
+### Checklist:
+* OrderItemPK
+* OrderItem
+* Order one-to-many association
+* Seed
+
+````
+Objects:
+OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+````
