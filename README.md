@@ -1,4 +1,7 @@
 # Domain Model
+
+![img.png](img.png)
+
 <hr>
 
 ## User entity and resource
@@ -36,8 +39,17 @@
 ```
 
 #### application.properties:
+A propriedade 'spring.jpa.open-in-view' é uma configuração do Spring Boot que, quando definida como 'true', mantém a sessão do Hibernate aberta até que a visualização seja renderizada. Isso permite o carregamento
+preguiçoso de entidades JPA, o que pode ser útil para evitar consultas desnecessárias ao banco de dados.
+<br>
+
+No entanto, deve-se ter cuidado ao usar essa configuração, pois manter a sessão aberta por muito tempo pode
+levar a problemas de desempenho.
+
 ```
 spring.profiles.active=test
+
+# Permite trazer dados associaddos
 spring.jpa.open-in-view=true
 ```
 

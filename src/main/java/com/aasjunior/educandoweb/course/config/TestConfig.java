@@ -2,6 +2,7 @@ package com.aasjunior.educandoweb.course.config;
 
 import com.aasjunior.educandoweb.course.entities.Order;
 import com.aasjunior.educandoweb.course.entities.User;
+import com.aasjunior.educandoweb.course.entities.enums.OrderStatus;
 import com.aasjunior.educandoweb.course.repositories.OrderRepository;
 import com.aasjunior.educandoweb.course.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,18 +43,21 @@ public class TestConfig implements CommandLineRunner {
         Order order1 = new Order(
                 null,
                 Instant.parse("2024-02-16T01:03:07Z"),
+                OrderStatus.PAID,
                 user1
         );
 
         Order order2 = new Order(
                 null,
                 Instant.parse("2024-02-17T01:03:07Z"),
+                OrderStatus.WAITING_PAYMENT,
                 user2
         );
 
         Order order3 = new Order(
                 null,
                 Instant.parse("2024-02-18T01:03:07Z"),
+                OrderStatus.WAITING_PAYMENT,
                 user1
         );
 
