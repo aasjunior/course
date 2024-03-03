@@ -1,14 +1,8 @@
 package com.aasjunior.educandoweb.course.config;
 
-import com.aasjunior.educandoweb.course.entities.Category;
-import com.aasjunior.educandoweb.course.entities.Order;
-import com.aasjunior.educandoweb.course.entities.Product;
-import com.aasjunior.educandoweb.course.entities.User;
+import com.aasjunior.educandoweb.course.entities.*;
 import com.aasjunior.educandoweb.course.entities.enums.OrderStatus;
-import com.aasjunior.educandoweb.course.repositories.CategoryRepository;
-import com.aasjunior.educandoweb.course.repositories.OrderRepository;
-import com.aasjunior.educandoweb.course.repositories.ProductRepository;
-import com.aasjunior.educandoweb.course.repositories.UserRepository;
+import com.aasjunior.educandoweb.course.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +19,7 @@ public class TestConfig implements CommandLineRunner {
     private final OrderRepository orderRepository;
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
+    private final OrderItemRepository orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -91,5 +86,12 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(user1, user2));
         orderRepository.saveAll(Arrays.asList(order1, order2, order3));
+
+        OrderItem oi1 = new OrderItem(order1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(order1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(order2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(order3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
     }
 }

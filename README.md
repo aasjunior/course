@@ -252,3 +252,23 @@ OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
 OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
 OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 ````
+
+### Part 2:
+
+Corrigir erro na comunicação bidirecional:
+
+```
+# OrderItemPk class:
+
+@ManyToOne
+@JoinColumn(name = "order_id")
+@JsonIgnore
+private Order order;
+
+# OrderItem class:
+
+@JsonIgnore
+public Order getOrder(){
+    return id.getOrder();
+}
+```
