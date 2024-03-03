@@ -4,6 +4,18 @@
 
 <hr>
 
+# Domain Instance
+
+![img_1.png](img_1.png)
+
+<hr>
+
+# Logical Layers
+
+![img_2.png](img_2.png)
+
+<hr>
+
 ## User entity and resource
 ### Basic entity checklist:
 * Basic attributes
@@ -150,4 +162,44 @@ Objects:
 Category cat1 = new Category(null, "Electronics"); 
 Category cat2 = new Category(null, "Books"); 
 Category cat3 = new Category(null, "Computers");
+```
+
+## Product
+
+```
+Objects:
+Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+```
+
+Provisório:
+```
+# Category class:
+
+@Transient
+private Set<Product> products = new HashSet<>();
+
+public Category(Long id, String name) {
+    this.id = id;
+    this.name = name;
+}
+
+```
+
+```
+# Product class:
+
+@Transient
+private Set<Category> categories = new HashSet<>();
+
+public Product(Long id, String name, String description, Double price, String imgURL) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.imgURL = imgURL;
+}
 ```
