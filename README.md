@@ -213,7 +213,9 @@ public Product(Long id, String name, String description, Double price, String im
 @JsonIgnore
 @ManyToMany(mappedBy = "categories")
 private Set<Product> products = new HashSet<>();
+```
 
+```
 # Product class:
 
 @ManyToMany
@@ -223,7 +225,9 @@ private Set<Product> products = new HashSet<>();
     inverseJoinColumns = @JoinColumn(name = "category_id")
 )
 private Set<Category> categories = new HashSet<>();
+```
 
+```
 # TestConfig.run():
 
 p1.getCategories().add(cat2);
@@ -264,11 +268,48 @@ Corrigir erro na comunicação bidirecional:
 @JoinColumn(name = "order_id")
 @JsonIgnore
 private Order order;
+```
 
+```
 # OrderItem class:
 
 @JsonIgnore
 public Order getOrder(){
     return id.getOrder();
 }
+```
+
+<hr>
+
+# Product-OrderItem one-to-many association
+
+```
+# Product class:
+
+@Getter(AccessLevel.NONE)
+@OneToMany(mappedBy = "id.product")
+private Set<OrderItem> items = new HashSet<>();
+
+@JsonIgnore
+public Set<Order> getOrders(){
+    Set<Order> set = new HashSet<>();
+    for(OrderItem x : items){
+        set.add(x.getOrder());
+    }
+    return set;
+}
+```
+
+```
+# OrderItemPk class:
+
+@ManyToOne
+@JoinColumn(name = "order_id")
+@JsonIgnore
+private Order order;
+
+@ManyToOne
+@JoinColumn(name = "product_id")
+@JsonIgnore
+private Product product;
 ```
